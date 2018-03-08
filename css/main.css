@@ -1,0 +1,131 @@
+body {
+  background-color: rgb(233, 231, 229);
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: rgb(1, 47, 134);
+  box-sizing: border-box;
+  color: #fff;
+  margin-bottom: 50px;
+  padding: 0 50px;
+}
+
+h1 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  height: 100px;
+}
+
+.container {
+  align-items: start;
+  display: flex;
+  justify-content: space-around;
+}
+
+form {
+  background-color: #fff;
+  border-radius: 5px;
+  border-bottom: 1px solid rgb(194, 194, 194);
+  padding: 20px;
+  max-height: 269px;
+  max-width: 450px;
+  width: 100%;
+}
+
+table {
+  background-color: #fff;
+  border-radius: 5px;
+  border-bottom: 1px solid rgb(194, 194, 194);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 650px;
+  width: 100%;
+}
+
+tr {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+thead {
+  align-items: center;
+  border-bottom: 1px solid rgb(194, 194, 194);
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+tbody tr {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+tbody tr td {
+  align-items: center;
+  border-right: 1px solid rgb(187, 187, 187);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+img {
+  max-width: 127px;
+}
+
+tbody tr td:first-of-type,
+tbody tr td:last-of-type {
+  border-right: 0;
+}
+
+th {
+  /* border-right: 1px solid rgb(134, 134, 134); */
+  flex: 1 1 100%;
+}
+
+th:last-child {
+  border-right: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+li input {
+  box-sizing: border-box;
+  font-size: 14px;
+  height: 30px;
+  max-width: 250px;
+  padding-left: 7px;
+  width: 100%;
+}
+
+ul button {
+  background-color: rgb(1, 47, 134);
+  border: 0;
+  color: #fff;
+  cursor: pointer; 
+  padding: 15px 30px;
+  text-transform: uppercase;  
+}
+
+ul button:hover {
+  background-color: rgb(1, 33, 94);
+}
