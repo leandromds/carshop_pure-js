@@ -41,33 +41,32 @@
   DOM.isBoolean = DOM.validateObject.isBoolean( '[object Boolean]' );
   DOM.isNull = DOM.validateObject.isNull( '[object Null]', '[object Undefined]' );
 
-  DOM.prototype.forEach = function forEach() {
-    return Array.prototype.forEach.apply( this.element, arguments);
-  };
+  DOM.method = ( function() {
+    var arrMethods = [ 
+        'forEach', 
+        'map', 
+        'filter',
+        'reduce',
+        'reduceRight',
+        'every',
+        'some'
+      ];
+    var listMethods = {};
+    arrMethods.forEach( function( item ) {
+      listMethods[ item ] = function() {
+        return Array.prototype[ item ].apply( this.element, arguments);
+      };
+    });
+    return listMethods;
+  })();
 
-  DOM.prototype.map = function map() {
-      return Array.prototype.map.apply( this.element, arguments );
-  };
-
-  DOM.prototype.filter = function filter() {
-      return Array.prototype.filter.apply( this.element, arguments );
-  };
-
-  DOM.prototype.reduce = function reduce() {
-      return Array.prototype.reduce.apply( this.element, arguments );
-  };
-
-  DOM.prototype.reduceRight = function reduceRight() {
-      return Array.prototype.reduceRight.apply( this.element, arguments );
-  };
-
-  DOM.prototype.every = function every() {
-      return Array.prototype.every.apply( this.element, arguments );
-  };
-
-  DOM.prototype.some = function some() {
-      return Array.prototype.some.apply( this.element, arguments );
-  };
+  DOM.prototype.forEach = DOM.method.forEach;
+  DOM.prototype.map = DOM.method.map;
+  DOM.prototype.filter = DOM.method.filter;
+  DOM.prototype.reduce = DOM.method.reduce;
+  DOM.prototype.reduceRight = DOM.method.reduceRight;
+  DOM.prototype.every = DOM.method.every;
+  DOM.prototype.some = DOM.method.some;
 
   DOM.prototype.on = function on( eventType, callback ) {
       this.forEach( function( $element ){ 
