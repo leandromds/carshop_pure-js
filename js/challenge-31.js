@@ -49,9 +49,22 @@
 
       handleSubmit: function handleSubmit(e) {
         e.preventDefault();
-        console.log( 'submit' );
         var $tableCar = $( '[data-js="table-car"]' ).get();
         $tableCar.appendChild( app.createNewCar() );
+        $( '[data-js="deleteButton"]' ).on( 'click', app.handleDelete );
+        app.clearForm();
+      },
+
+      handleDelete: function handleDelete(e) {
+        e.preventDefault();
+        var $tr = this.parentElement.parentElement;
+        $tr.innerHTML = '';
+      }, 
+
+      clearForm: function clearForm() {
+          $('input').forEach( function( item ) {
+            item.value = '';
+          });
       },
 
       createNewCar: function createNewCar() {
@@ -63,22 +76,35 @@
         var $tdYear = doc.createElement( 'td' );
         var $tdPlate = doc.createElement( 'td' );
         var $tdColor = doc.createElement( 'td' );
+        var $tdButtonDelete = doc.createElement( 'td' );
+        var $buttonDelete = doc.createElement( 'button' );
         
+        // $buttonDelete.addEventListener( 'click', app.handleDelete );
+
         $image.setAttribute( 'src', $('[data-js="image"]').get().value);
+        $buttonDelete.setAttribute( 'data-js', 'deleteButton' );
         $tdImage.appendChild( $image );
 
-        $tdBrand.textContent = $('[data-js="brand-model"]').get().value;
-        $tdYear.textContent = $('[data-js="year"]').get().value;
-        $tdPlate.textContent = $('[data-js="plate"]').get().value;
-        $tdColor.textContent = $('[data-js="color"]').get().value;
+        $tdBrand.textContent = $( '[data-js="brand-model"]' ).get().value;
+        $tdYear.textContent = $( '[data-js="year"]' ).get().value;
+        $tdPlate.textContent = $( '[data-js="plate"]' ).get().value;
+        $tdColor.textContent = $( '[data-js="color"]' ).get().value;
+        $buttonDelete.textContent = 'Remover';
 
-        $tr.appendChild($tdImage);
-        $tr.appendChild($tdBrand);
-        $tr.appendChild($tdYear);
-        $tr.appendChild($tdPlate);
-        $tr.appendChild($tdColor);
+        $tdButtonDelete.appendChild( $buttonDelete );
+
+        $tr.appendChild( $tdImage );
+        $tr.appendChild( $tdBrand );
+        $tr.appendChild( $tdYear );
+        $tr.appendChild( $tdPlate );
+        $tr.appendChild( $tdColor );
+        $tr.appendChild( $tdButtonDelete );
 
         return $fragment.appendChild($tr);
+      },
+
+      removeCar: function removeCar() {
+
       },
 
       companyInfo: function companyInfo() {
